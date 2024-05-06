@@ -1,13 +1,12 @@
-import java.util.ArrayList;
 
 public class SearchNode implements Comparable<SearchNode> {
     private String word;
-    private ArrayList<String> path;
+    private String parent;
     private int pathLength;
 
-    SearchNode(String word, ArrayList<String> path, int pathLength){
+    SearchNode(String word, String parent, int pathLength){
         this.word = word;
-        this.path = path;
+        this.parent = parent;
         this.pathLength = pathLength;
     }
 
@@ -17,8 +16,8 @@ public class SearchNode implements Comparable<SearchNode> {
     public int getPathLength(){
         return pathLength;
     }
-    public ArrayList<String> getPath(){
-        return new ArrayList<String>(path);
+    public String getParent(){
+        return new String(parent);
     }
 
     public int compareTo(SearchNode other) {

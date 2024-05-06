@@ -1,14 +1,15 @@
 import java.util.*;
 import java.lang.String;
 
-public class tester {
+public class Program {
 
     private static ArrayList<String> wordPath;
     private static String start, finish, chosenAlgorithm;
     private static EnglishWords englishWords;
+    public static long startTime ;
     public static void main(String[] args) {
 
-        englishWords = new EnglishWords("words_alpha.txt");
+        englishWords = new EnglishWords("src/words_alpha.txt");
 
         takeInput();
         solve();
@@ -17,18 +18,20 @@ public class tester {
 
     public static void solve() {
         try{
-            long startTime = System.nanoTime();
-            wordPath = WordLadderSolver.WordLadderSolve(start, finish, englishWords, "ucs");
-            double processMillisecondTime = (System.nanoTime()-startTime)/1e6;
-            System.out.printf("Process time(Millisecond): %f\n", processMillisecondTime);
-            System.out.printf("Path length: %d\n", wordPath.size());
+            startTime = System.nanoTime();
+            wordPath = WordLadderSolver.WordLadderSolve(start, finish, englishWords, chosenAlgorithm);
             System.out.printf("Path :\n", wordPath.size());
             for(String word : wordPath){
                 System.out.println(word);
             }
+            System.out.printf("Path length: %d\n", wordPath.size());
         }
         catch(Exception e){
             System.out.println(e.getMessage());
+        }
+        finally{
+            double processMillisecondTime = (System.nanoTime()-startTime)/1e6;
+            System.out.printf("Process time(Millisecond): %f\n", processMillisecondTime);
         }
     }
 
@@ -77,7 +80,6 @@ public class tester {
                 System.out.println("Start word is not a valid algorithm.");
             }
         }
-
         scanner.close();
     }
 }
