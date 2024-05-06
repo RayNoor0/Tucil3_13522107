@@ -65,6 +65,6 @@ public class WordLadderSolver {
                 pq.add(new SearchNode (nearbyWord, newCurrentPath, newPathLength));
             }
         }
-        throw new Exception("target tidak dapat dicapai");
+        throw new Exception("Target is unreachable");
     }
 }
