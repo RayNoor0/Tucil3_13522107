@@ -1,3 +1,5 @@
+// Astar.java
+
 public class Astar {
     public static int getDistance(int currentPathLength, String currentString, String targetString){
         int distanceCounter = 0;

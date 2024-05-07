@@ -1,3 +1,5 @@
+// GBFS.java
+
 public class GBFS {
     public static int getDistance(String currentString, String targetString){
         int distanceCounter = 0;

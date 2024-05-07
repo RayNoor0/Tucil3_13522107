@@ -1,3 +1,4 @@
+// SearchNode.java
 
 public class SearchNode implements Comparable<SearchNode> {
     private String word;
