@@ -7,6 +7,7 @@ import java.util.HashSet;
 class EnglishWords{
     private HashSet<String> data;
 
+
     EnglishWords(String filePath){
         HashSet<String> result = new HashSet<>();
 

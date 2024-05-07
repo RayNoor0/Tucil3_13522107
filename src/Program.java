@@ -9,7 +9,7 @@ public class Program {
     public static long startTime ;
     public static void main(String[] args) {
 
-        englishWords = new EnglishWords("src/words_alpha.txt");
+        englishWords = new EnglishWords("src/dictionary.txt");
 
         takeInput();
         solve();
@@ -17,6 +17,7 @@ public class Program {
     }
 
     public static void solve() {
+        System.out.println("\n========\"Result\"========");
         try{
             startTime = System.nanoTime();
             wordPath = WordLadderSolver.WordLadderSolve(start, finish, englishWords, chosenAlgorithm);
@@ -32,6 +33,8 @@ public class Program {
         finally{
             double processMillisecondTime = (System.nanoTime()-startTime)/1e6;
             System.out.printf("Process time(Millisecond): %f\n", processMillisecondTime);
+            int nodeVisited = WordLadderSolver.getNodeVisited();
+            System.out.printf("Node visited: %d\n", nodeVisited);
         }
     }
 
@@ -39,6 +42,8 @@ public class Program {
         boolean str1Valid, str2Valid, str3Valid;
         Scanner scanner = new Scanner(System.in);
         str1Valid = str2Valid = str3Valid = false;
+
+        System.out.println("==\"Word Ladder Solver\"==");
 
         while(!str1Valid){
             System.out.printf("Start word: ");

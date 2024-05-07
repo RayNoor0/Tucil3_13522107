@@ -1,1 +1,2 @@
 https://github.com/matthewreagan/WebstersEnglishDictionary
+https://docs.oracle.com/javase/tutorial/collections/interfaces/examples/dictionary.txt

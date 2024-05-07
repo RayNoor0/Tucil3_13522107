@@ -10,6 +10,7 @@ public class WordLadderSolver {
     private static ArrayList<String> resultPath;
     private static String target, start;
     private static EnglishWords englishWords;
+    private static int nodeVisited;
 
     public static ArrayList<String> WordLadderSolve(String start, String target, EnglishWords englishWords, String chosenAlgorithm)throws Exception{
         prepare(start, target, englishWords);
@@ -31,10 +32,11 @@ public class WordLadderSolver {
         visited = new HashSet<>();
         parents = new HashMap<>();
         englishWords = _englishWords;
+        nodeVisited = 0;
     }
 
 
-    public static ArrayList<String> solve(String chosenAlgorithm) throws Exception{
+    private static ArrayList<String> solve(String chosenAlgorithm) throws Exception{
         SearchNode currentNode;
         ArrayList<String> nearbyWords;
         int newPathValue;
@@ -43,25 +45,26 @@ public class WordLadderSolver {
             
             // skip if visited
             if(visited.contains(currentNode.getWord()))
-                continue;
-
+            continue;
+            
             // clear queue if using gbfs
             if(chosenAlgorithm.equalsIgnoreCase("gbfs"))
-                pq.clear();
+            pq.clear();
             
             // add to parent value to currentWord
             if(currentNode.getParent() != null)
-                parents.put(currentNode.getWord(), currentNode.getParent());
-
+            parents.put(currentNode.getWord(), currentNode.getParent());
+            
             // return if target word is found
             if(currentNode.getWord().equalsIgnoreCase(target)){
                 traceBackParents(currentNode.getWord());
                 return resultPath;
             }
-
+            
             // add to visited
             visited.add(currentNode.getWord());
-
+            nodeVisited+=1;
+            
             // visit all nearby words
             nearbyWords = englishWords.getNearby(currentNode.getWord());
             for(String nearbyWord : nearbyWords){
@@ -88,10 +91,14 @@ public class WordLadderSolver {
         throw new Exception("Target is unreachable");
     }
 
-    public static void traceBackParents(String currentWord){
+    private static void traceBackParents(String currentWord){
         // System.out.println(parents);
         resultPath.add(0,currentWord);
         if(!currentWord.equalsIgnoreCase(start))
             traceBackParents(parents.get(currentWord));
+    }
+
+    public static int getNodeVisited(){
+        return nodeVisited;
     }
 }
