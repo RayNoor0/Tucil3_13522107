@@ -55,15 +55,15 @@ public class WordLadderSolver {
             if(currentNode.getParent() != null)
             parents.put(currentNode.getWord(), currentNode.getParent());
             
+            // add to visited
+            visited.add(currentNode.getWord());
+            nodeVisited+=1;
+            
             // return if target word is found
             if(currentNode.getWord().equalsIgnoreCase(target)){
                 traceBackParents(currentNode.getWord());
                 return resultPath;
             }
-            
-            // add to visited
-            visited.add(currentNode.getWord());
-            nodeVisited+=1;
             
             // visit all nearby words
             nearbyWords = englishWords.getNearby(currentNode.getWord());
