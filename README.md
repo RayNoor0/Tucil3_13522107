@@ -1,4 +1,4 @@
-# Tucil2_13522107
+# Tucil3_13522107
 <h1 align="center">Tugas Kecil 3_Strategi Algoritma_13522107</h1>
 
 ## Deskripsi
